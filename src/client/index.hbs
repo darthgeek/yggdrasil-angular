@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title ng-bind="title">
+	  {{#if htmlWebpackPlugin.options.appTitle}}
+		  {{htmlWebpackPlugin.options.appTitle}}
+	  {{else}}Webpack Application{{/if}}
+  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+  <base href="/">
+  <style>
+    /* This helps the ng-show/ng-hide animations start at the right place. */
+    /* Since Angular has this but needs to load, this gives us the class early. */
+
+    .ng-hide {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+<div ng-if="currentUser != undefined">
+  <style scoped="scoped">
+    body {
+      font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+    }
+  </style>
+  <small>Loading...</small>
+</div>
+<div class="page" ng-hide="currentUser != undefined" ui-view>
+  <div class="page" ng-controller="ShellController as shell">
+    <div class="page" ui-view="game-canvas"></div>
+    <div class="menu-overlay" ng-controller="SystemMenuController as menu" ng-hide="!systemMenuVisible" ui-view="system-menu"></div>
+  </div>
+</div>
+</body>
+</html>

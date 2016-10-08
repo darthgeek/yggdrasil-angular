@@ -1,0 +1,29 @@
+<div class="login-page" ng-controller="LoginController as vm">
+	<div class="login-box">
+		<div class="login-box-header">
+			<img width="auto" height="80" ng-src="/{{iconUrl}}"/>
+			<a href="/">Yggdrasil</a>
+		</div>
+		<div class="login-box-body">
+			<p class="login-box-msg">Sign in to start your session</p>
+			<iframe src="sink" name="sinkFrame" style="display:none"></iframe>
+			<form name="login-form"
+				  action="sink" target="sinkFrame" method="post"
+				  ng-submit="vm.onLogin(credentials.username, credentials.password)"
+				  novalidate form-autofill-fix>
+				<div class="form-group has-feedback">
+					<input name="username" type="username" class="form-control" placeholder="Username"
+						   ng-model="credentials.username">
+					<span class="glyphicon glyphicon-user form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input name="password" type="password" class="form-control" placeholder="Password"
+						   ng-model="credentials.password">
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<button id="login-button" class="btn btn-primary btn-flat pull-right" type="submit">Login</button>
+				<div class="clearfix"></div>
+			</form>
+		</div>
+	</div>
+</div>
